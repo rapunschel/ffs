@@ -12,3 +12,11 @@ instance Enum Number where
 
   fromEnum Zero = 0
   fromEnum (Succ n) = fromEnum n + 1
+
+instance Semigroup Number where
+
+  n <> m = toEnum (fromEnum n + fromEnum m)
+
+instance Monoid Number where
+
+  mempty = Zero
