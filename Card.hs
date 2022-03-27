@@ -15,8 +15,8 @@ infixl 6 `And`
 data Bunch a = a `Comma` (Bunch a) | a `And` a
  deriving (Eq, Show, Read)
 
-bunch :: a -> a -> [a] -> Bunch a
-bunch c0 c1 = foldr Comma (c0 `And` c1) 
+bfold :: a -> a -> [a] -> Bunch a
+bfold c0 c1 = foldr Comma (c0 `And` c1)
 
 --- TEST
 
