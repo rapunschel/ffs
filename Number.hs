@@ -7,8 +7,8 @@ instance Enum Number where
 
   toEnum n 
    | n == 0      = Zero
-   | n > 0       = Succ $ (toEnum (n - 1))
-   | otherwise   = error "negate value"
+   | n > 0       = Succ $ toEnum (n - 1)
+   | otherwise   = error "negative value"
 
   fromEnum Zero = 0
   fromEnum (Succ n) = fromEnum n + 1
@@ -33,4 +33,4 @@ instance Num Number where
   fromInteger = toEnum . fromEnum
 
 op :: (Int -> Int -> Int) -> Number -> Number -> Number
-op f n m = toEnum $ (fromEnum n) `f` (fromEnum m)
+op f n m = toEnum $ fromEnum n `f` fromEnum m
