@@ -1,4 +1,5 @@
 module Number where 
+import Data.Foldable
 
 data Number = Zero | Succ Number
   deriving (Show, Read, Eq)

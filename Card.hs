@@ -1,5 +1,5 @@
 module Card where
-import Number 
+import Number
 
 data Color = White | Yellow | Blue | Green | Red 
  deriving (Show, Read, Eq, Enum)
@@ -12,12 +12,11 @@ type Deck = Bunch Card
 infixl 5 `Comma`
 infixl 6 `And`
 
-data Bunch a = a `Comma` (Bunch a) |  a `And` a
+data Bunch a = a `Comma` (Bunch a) | a `And` a
  deriving (Eq, Show, Read)
 
 bunch :: a -> a -> [a] -> Bunch a
-bunch c0 c1 [] = c0 `And` c1
-bunch c0 c1 (c2:cs) = c0 `Comma` bunch c1 c2 cs
+bunch c0 c1 = foldr Comma (c0 `And` c1) 
 
 --- TEST
 
