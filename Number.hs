@@ -20,3 +20,17 @@ instance Semigroup Number where
 instance Monoid Number where
 
   mempty = Zero
+
+instance Num Number where
+
+  n + m = op (+) n m
+  n - m = op (-) n m
+  n * m = op (*) n m
+
+  abs = id
+  signum = const $ Succ Zero
+
+  fromInteger = toEnum . fromEnum
+
+op :: (Int -> Int -> Int) -> Number -> Number -> Number
+op f n m = toEnum $ (fromEnum n) `f` (fromEnum m)
